@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="keywords" content="Workdun">
+    <meta name="description" content="Find & Hire Expert Freelancers. Work with the best freelance talent from around the world on our secure, flexible and cost-effective platform.">
+    <meta name="author" content="Oyebade Taiwo comfort">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          
+  <link rel="stylesheet" href="{{url_for('static', filename = 'bootstrap/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename = 'fontawesome/css/all.css')}}">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="icon" href="{{url_for('static', filename = 'favicon/favicon-32x32.png')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+    <title>{{pagename}}</title>
+</head>
+<body>
+    <div class="container-fluid">
+
+<header>
+  <!--first nav-bar-->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{url_for('home')}}">WORKDUN</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url_for('freelancer')}}">Find Freelancers</a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('about')}}">About</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search" method='get' action='/search/'>
+          <input class="form-control me-2" type="search" placeholder="Search" name='s' aria-label="Search">
+          <button class="btn btn-outline-dark button" type="submit">Search</button>
+        </form>
+        <a class="nav-link" href="{{url_for('sign')}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign Up</a>
+        <a class="nav-link" href="{{url_for('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> Log In</a>
+  
+      </div>
+    </div>
+  </nav>
+  <!--end-->
+  
+  
+  <!--second nav-bar-->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3" style='border:2px solid lightgray;'>
+    <div class="container-fluid">
+  
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Graphics & Design</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Digital Marketing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Writing & Translation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Music & Audio</a> 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Video & Animation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Programming & Tech</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Photography</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Business</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">AI Services</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--end-->
+</header>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="keywords" content="Workdun">
+    <meta name="description" content="Find & Hire Expert Freelancers. Work with the best freelance talent from around the world on our secure, flexible and cost-effective platform.">
+    <meta name="author" content="Oyebade Taiwo comfort">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'fontawesome/css/all.css')}}">
+    <link rel="icon" href="{{url_for('static', filename = 'favicon/favicon-32x32.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='animate.min.css')}}">
+    <title></title>
+    <style>
+
+        /*start*/
+        .pro-details{
+        max-width:600px;
+        padding:20px;
+        margin:0px auto;
+        border:1px solid lightgray;
+     }
+.update-btn{
+    background-color:blueviolet;
+    color:white;
+}
+/*end*/
+
+</style>
+</head>
+<body>
+    
+
+    <div class="container-fluid">
+        <form method='POST' action='' enctype='multipart/form-data'>
+            <input type='hidden' name='csrf_token' value='{{csrf_token()}}'>
+        
+             <!--start-->
+                <div class="row">
+                    <div class="col-md">
+                        <div class='pro-details mt-5'>
+                             <!--Flashed message start-->
+                                {% set message = get_flashed_messages(with_categories=True)%}
+                                {%for c,m in message %}
+                                <div class='alert alert-{{c}}'>{{m}}</div>
+                                {% endfor %}
+                            <!--Flashed message end-->
+                            <div>
+                                <div>
+                                    <label for='description' class='mb-2'>Description</label>
+                                    <input type='text' name='description' Class='form-control'>
+                                </div>
+
+                                <div>
+                                    <label for='description'></label>
+                                    <input type='hidden' name='userid'value='{{userdeets.user_id}}' Class='form-control'>
+                                </div>
+                                 
+                                <div class='mb-3'>
+                                    <label for='pix1'>Add Portfolio 1</label>
+                                    <input type='file' name='pix1' Class='form-control'>
+                                </div>
+
+                                <button type='submit'class='btn mt-3 col-12 update-btn'>Add Portfolio</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <!--end-->
+
+
+
+           
+        </form>  
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

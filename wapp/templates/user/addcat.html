@@ -1,0 +1,625 @@
+{% extends 'user/profile.html'%}
+
+{% block breadcrumbs %}
+                            <!--Form start-->
+                            <form method='POST' action='' enctype='multipart/form-data'>
+                                <input type='hidden' name='csrf_token' value='{{csrf_token()}}'>
+                                
+                                <!--Flashed message start-->
+                                {% set message = get_flashed_messages(with_categories=True)%}
+                                  {%for c,m in message %}
+                                  <div class='alert alert-{{c}}'>{{m}}</div>
+                                  {% endfor %}
+                                   <!--Flashed message end-->
+
+
+                                <!--Categories start-->
+                                <div>
+                                    <label for="category" class="form-label">Category</label>
+                                    <select name='bookcat' id='category' class='form-control'>
+                                      <option>Please Select Category</option>
+                                      {% for c in cats %}
+                                      <option value='{{c.cat_id}}'>{{c.cat_name}}</option>
+                                      {% endfor%}
+                                    </select>
+                                  </div>
+                                   <!--Categories end-->
+
+
+                                   <!--userid start-->
+                                  <div>
+                                    <label for="userid" class="form-label"></label>
+                                    <input type="hidden" class="form-control" id="userid" name='userid' value='{{userdeets.user_id}}'> 
+                                  </div>
+                                   <!--userid end-->
+
+
+                                   <!--Title start-->
+                                  <div class="mb-3">
+                                    <label for="title" class="form-label">Creat a title for your ad</label>
+                                    <input type="text" class="form-control" id="title" name='title'> 
+                                  </div>
+                                   <!--Title end-->
+
+
+                                  <!--Upload Cover start-->
+                                  <div class="mb-3">
+                                    <label class="form-label" for="customFile">Upload Cover</label>
+                                    <input type="file" class="form-control" id="customFile" name='cover'>
+                                  </div>
+                                   <!--Upload Cover end-->
+
+
+                                  <!-- Subcategory start-->
+                                  <label for="Subcategory" class="form-label">Choose subcategorys according to the choosen category</label>
+                                  <div style="height:300px; width:500px; overflow:auto; border:3px solid lightgray; border-radius:5px; padding:10px;">
+                                     <!--Programming $ Tech start-->
+                                        <fieldset class="mb-3">
+                                            <legend>Programming & Tech</legend>
+                                            <div class="form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio1" value='WordPress'>
+                                              <label class="form-check-label" for="exampleRadio1">WordPress</label>
+                                            </div>
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Website Builder'>
+                                              <label class="form-check-label" for="exampleRadio2">Website Builder</label>
+                                            </div> 
+                                            <div class=" form-check">
+                                                <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='E-Commerce Development'>
+                                                <label class="form-check-label" for="exampleRadio2">E-Commerce Development</label>
+                                              </div>  
+                                              
+                                              <div class=" form-check">
+                                                <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Game Development'>
+                                                <label class="form-check-label" for="exampleRadio2">Game Development</label>
+                                              </div>  
+
+                                              <div class=" form-check">
+                                                <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Development For Streamers'>
+                                                <label class="form-check-label" for="exampleRadio2">Development For Streamers</label>
+                                              </div>
+                                              
+                                              <div class=" form-check">
+                                                <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Mobile App'>
+                                                <label class="form-check-label" for="exampleRadio2">Mobile App</label>
+                                              </div>
+                                              
+                                              <div class=" form-check">
+                                                <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Website Programming'>
+                                                <label class="form-check-label" for="exampleRadio2">Website Programming</label>
+                                              </div> 
+                                              
+                                              <div class=" form-check">
+                                                <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Desktop Application'>
+                                                <label class="form-check-label" for="exampleRadio2">Desktop Application</label>
+                                              </div>
+                                          </fieldset>
+                                          <!--Programming $ Tech end-->
+
+
+                                          <!--Graphics & Design start-->
+                                        <fieldset class="mb-3">
+                                          <legend>Graphics & Design</legend>
+                                          <div class="form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio1" value='Logo Design'>
+                                            <label class="form-check-label" for="exampleRadio1">Logo Design</label>
+                                          </div>
+                                          <div class=" form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Branding'>
+                                            <label class="form-check-label" for="exampleRadio2">Branding</label>
+                                          </div> 
+                                          <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Illustration'>
+                                              <label class="form-check-label" for="exampleRadio2">Illustration</label>
+                                            </div>  
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Print Design'>
+                                              <label class="form-check-label" for="exampleRadio2">Print Design</label>
+                                            </div>  
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Web Design'>
+                                              <label class="form-check-label" for="exampleRadio2">Web Design</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='User Interface (UI) Design'>
+                                              <label class="form-check-label" for="exampleRadio2">User Interface (UI) Design</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='User Experience (UX) Design'>
+                                              <label class="form-check-label" for="exampleRadio2">User Experience (UX) Design</label>
+                                            </div> 
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Infographic Design'>
+                                              <label class="form-check-label" for="exampleRadio2">Infographic Design</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Motion Graphics'>
+                                              <label class="form-check-label" for="exampleRadio2">Motion Graphics</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Packaging Design'>
+                                              <label class="form-check-label" for="exampleRadio2">Packaging Design</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Typography'>
+                                              <label class="form-check-label" for="exampleRadio2">Typography</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Icon Design'>
+                                              <label class="form-check-label" for="exampleRadio2">Icon Design</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='3D Modeling and Rendering'>
+                                              <label class="form-check-label" for="exampleRadio2">3D Modeling and Rendering</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Photo Editing and Retouching'>
+                                              <label class="form-check-label" for="exampleRadio2">Photo Editing and Retouching</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Visual Effects (VFX)'>
+                                              <label class="form-check-label" for="exampleRadio2">Visual Effects (VFX)</label>
+                                            </div>
+                                        </fieldset>
+                                        <!--Graphics & Design end-->
+
+
+                                         <!--Digital Marketing start-->
+                                         <fieldset class="mb-3">
+                                          <legend>Digital Marketing</legend>
+                                          <div class="form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio1" value='Search Engine Optimization (SEO)'>
+                                            <label class="form-check-label" for="exampleRadio1">Search Engine Optimization (SEO)</label>
+                                          </div>
+                                          <div class=" form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Pay-Per-Click Advertising (PPC)'>
+                                            <label class="form-check-label" for="exampleRadio2">Pay-Per-Click Advertising (PPC)</label>
+                                          </div> 
+                                          <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Social Media Marketing'>
+                                              <label class="form-check-label" for="exampleRadio2">Social Media Marketing</label>
+                                            </div> 
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Content Marketing'>
+                                              <label class="form-check-label" for="exampleRadio2">Content Marketing</label>
+                                            </div> 
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Email Marketing'>
+                                              <label class="form-check-label" for="exampleRadio2">Email Marketing</label>
+                                            </div>  
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Influencer Marketing'>
+                                              <label class="form-check-label" for="exampleRadio2">Influencer Marketing</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Affiliate Marketing'>
+                                              <label class="form-check-label" for="exampleRadio2">Affiliate Marketing</label>
+                                            </div>
+                                           
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value=' Online Reputation Management (ORM)'>
+                                              <label class="form-check-label" for="exampleRadio2"> Online Reputation Management (ORM)</label>
+                                            </div> 
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Conversion Rate Optimization (CRO)'>
+                                              <label class="form-check-label" for="exampleRadio2">Conversion Rate Optimization (CRO)</label>
+                                            </div> 
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Marketing Analytics'>
+                                              <label class="form-check-label" for="exampleRadio2">Marketing Analytics</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Mobile Marketing'>
+                                              <label class="form-check-label" for="exampleRadio2">Mobile Marketing</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Video Marketing'>
+                                              <label class="form-check-label" for="exampleRadio2">Video Marketing</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Web Analytics'>
+                                              <label class="form-check-label" for="exampleRadio2">Web Analytics</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Local SEO'>
+                                              <label class="form-check-label" for="exampleRadio2">Local SEO</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='E-commerce Marketing'>
+                                              <label class="form-check-label" for="exampleRadio2">E-commerce Marketing</label>
+                                            </div>
+                                        </fieldset>
+                                        <!--Digital Marketing end-->
+
+
+                                         <!--Writing & Translation start-->
+                                         <fieldset class="mb-3">
+                                          <legend>Writing & Translation</legend>
+                                          <div class="form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio1" value='Copywriting'>
+                                            <label class="form-check-label" for="exampleRadio1">Copywriting</label>
+                                          </div>
+                                          <div class=" form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Content Writing'>
+                                            <label class="form-check-label" for="exampleRadio2">Content Writing</label>
+                                          </div> 
+                                          <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Technical Writing'>
+                                              <label class="form-check-label" for="exampleRadio2">Technical Writing</label>
+                                            </div>  
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Creative Writing'>
+                                              <label class="form-check-label" for="exampleRadio2">Creative Writing</label>
+                                            </div>  
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Blogging'>
+                                              <label class="form-check-label" for="exampleRadio2">Blogging</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Academic Writing'>
+                                              <label class="form-check-label" for="exampleRadio2">Academic Writing</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Resume/CV Writing'>
+                                              <label class="form-check-label" for="exampleRadio2">Resume/CV Writing</label>
+                                            </div> 
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Editing and Proofreading'>
+                                              <label class="form-check-label" for="exampleRadio2">Editing and Proofreading</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Translation'>
+                                              <label class="form-check-label" for="exampleRadio2">Translation</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Localization'>
+                                              <label class="form-check-label" for="exampleRadio2">Localization</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Transcription'>
+                                              <label class="form-check-label" for="exampleRadio2">Transcription</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Ghostwriting'>
+                                              <label class="form-check-label" for="exampleRadio2">Ghostwriting</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Grant Writing'>
+                                              <label class="form-check-label" for="exampleRadio2">Grant Writing</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value=' Business Writing'>
+                                              <label class="form-check-label" for="exampleRadio2"> Business Writing</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Medical Writing'>
+                                              <label class="form-check-label" for="exampleRadio2">Medical Writing</label>
+                                            </div>
+                                        </fieldset>
+                                        <!--Writing & Translation end-->
+
+
+                                         <!--Music & Audio start-->
+                                         <fieldset class="mb-3">
+                                          <legend>Music & Audio</legend>
+                                          <div class="form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio1" value='Music Production'>
+                                            <label class="form-check-label" for="exampleRadio1">Music Production</label>
+                                          </div>
+                                          <div class=" form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Sound Design'>
+                                            <label class="form-check-label" for="exampleRadio2">Sound Design</label>
+                                          </div> 
+                                          <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Songwriting'>
+                                              <label class="form-check-label" for="exampleRadio2">Songwriting</label>
+                                            </div>  
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Voiceover and Narration'>
+                                              <label class="form-check-label" for="exampleRadio2">Voiceover and Narration</label>
+                                            </div>  
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Audio Editing and Mixing'>
+                                              <label class="form-check-label" for="exampleRadio2">Audio Editing and Mixing</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Foley Artistry'>
+                                              <label class="form-check-label" for="exampleRadio2">Foley Artistry</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Music Composition'>
+                                              <label class="form-check-label" for="exampleRadio2">Music Composition</label>
+                                            </div> 
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Sound Engineering'>
+                                              <label class="form-check-label" for="exampleRadio2">Sound Engineering</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Podcasting'>
+                                              <label class="form-check-label" for="exampleRadio2">Podcasting</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Audio Mastering'>
+                                              <label class="form-check-label" for="exampleRadio2">Audio Mastering</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='DJing'>
+                                              <label class="form-check-label" for="exampleRadio2">DJing</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Instrumental Performance'>
+                                              <label class="form-check-label" for="exampleRadio2">Instrumental Performance</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Music Theory and Education'>
+                                              <label class="form-check-label" for="exampleRadio2">Music Theory and Education</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Podcast Editing'>
+                                              <label class="form-check-label" for="exampleRadio2">Podcast Editing</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Audio Post-Production'>
+                                              <label class="form-check-label" for="exampleRadio2">Audio Post-Production</label>
+                                            </div>
+                                        </fieldset>
+                                        <!--Music & Audio end-->
+
+
+                                        <!--Video & Animation start-->
+                                        <fieldset class="mb-3">
+                                          <legend>Video & Animation</legend>
+                                          <div class="form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio1" value='Motion Graphics'>
+                                            <label class="form-check-label" for="exampleRadio1">Motion Graphics</label>
+                                          </div>
+                                          <div class=" form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='3D Animation'>
+                                            <label class="form-check-label" for="exampleRadio2">3D Animation</label>
+                                          </div> 
+                                          <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Visual Effects (VFX)'>
+                                              <label class="form-check-label" for="exampleRadio2">Visual Effects (VFX)</label>
+                                            </div>  
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Stop Motion Animation'>
+                                              <label class="form-check-label" for="exampleRadio2">Stop Motion Animation</label>
+                                            </div>  
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Whiteboard Animation'>
+                                              <label class="form-check-label" for="exampleRadio2">Whiteboard Animation</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='2D Animation'>
+                                              <label class="form-check-label" for="exampleRadio2">2D Animation</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Infographic Animation'>
+                                              <label class="form-check-label" for="exampleRadio2">Infographic Animation</label>
+                                            </div> 
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Explainer Videos'>
+                                              <label class="form-check-label" for="exampleRadio2">Explainer Videos</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value=' Broadcast Design'>
+                                              <label class="form-check-label" for="exampleRadio2"> Broadcast Design</label>
+                                            </div>
+                                        </fieldset>
+                                        <!--Video & Animation end-->
+
+                                        
+                                        <!--Photography start-->
+                                        <fieldset class="mb-3">
+                                          <legend>Photography</legend>
+                                          <div class="form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio1" value='Portrait Photography'>
+                                            <label class="form-check-label" for="exampleRadio1">Portrait Photography</label>
+                                          </div>
+                                          <div class=" form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Landscape Photography'>
+                                            <label class="form-check-label" for="exampleRadio2">Landscape Photography</label>
+                                          </div> 
+                                          <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Wildlife Photography'>
+                                              <label class="form-check-label" for="exampleRadio2">Wildlife Photography</label>
+                                            </div>  
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Macro Photography'>
+                                              <label class="form-check-label" for="exampleRadio2">Macro Photography</label>
+                                            </div>  
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Street Photography'>
+                                              <label class="form-check-label" for="exampleRadio2">Street Photography</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Fashion Photography'>
+                                              <label class="form-check-label" for="exampleRadio2">Fashion Photography</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Architectural Photography'>
+                                              <label class="form-check-label" for="exampleRadio2">Architectural Photography</label>
+                                            </div> 
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Product Photography'>
+                                              <label class="form-check-label" for="exampleRadio2">Product Photography</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Event Photography'>
+                                              <label class="form-check-label" for="exampleRadio2">Event Photography</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Documentary Photography'>
+                                              <label class="form-check-label" for="exampleRadio2">Documentary Photography</label>
+                                            </div>
+                                        </fieldset>
+                                        <!--Photography end-->
+
+
+                                        <!--Business start-->
+                                        <fieldset class="mb-3">
+                                          <legend>Business</legend>
+                                          <div class="form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio1" value=' Accounting and Finance'>
+                                            <label class="form-check-label" for="exampleRadio1"> Accounting and Finance</label>
+                                          </div>
+                                          <div class=" form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Marketing and Advertising'>
+                                            <label class="form-check-label" for="exampleRadio2">Marketing and Advertising</label>
+                                          </div> 
+                                          <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Human Resources'>
+                                              <label class="form-check-label" for="exampleRadio2">Human Resources</label>
+                                            </div>  
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Operations and Supply Chain Management'>
+                                              <label class="form-check-label" for="exampleRadio2">Operations and Supply Chain Management</label>
+                                            </div>  
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Entrepreneurship and Small Business'>
+                                              <label class="form-check-label" for="exampleRadio2">Entrepreneurship and Small Business</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='International Business'>
+                                              <label class="form-check-label" for="exampleRadio2">International Business</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Business Strategy and Consulting'>
+                                              <label class="form-check-label" for="exampleRadio2">Business Strategy and Consulting</label>
+                                            </div> 
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Business Ethics and Corporate Social Responsibility'>
+                                              <label class="form-check-label" for="exampleRadio2">Business Ethics and Corporate Social Responsibility</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Information Technology and E-commerce'>
+                                              <label class="form-check-label" for="exampleRadio2">Information Technology and E-commerce</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Business Law and Compliance'>
+                                              <label class="form-check-label" for="exampleRadio2">Business Law and Compliance</label>
+                                            </div>
+                                        </fieldset>
+                                        <!--Business end-->
+                                        
+
+                                         <!--AI Services start-->
+                                         <fieldset class="mb-3">
+                                          <legend>AI Services</legend>
+                                          <div class="form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio1" value='Natural Language Processing (NLP)'>
+                                            <label class="form-check-label" for="exampleRadio1">Natural Language Processing (NLP)</label>
+                                          </div>
+                                          <div class=" form-check">
+                                            <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Computer Vision'>
+                                            <label class="form-check-label" for="exampleRadio2">Computer Vision</label>
+                                          </div> 
+                                          <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Speech Recognition and Synthesis'>
+                                              <label class="form-check-label" for="exampleRadio2">Speech Recognition and Synthesis</label>
+                                            </div>  
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Machine Learning and Predictive Analytics'>
+                                              <label class="form-check-label" for="exampleRadio2">Machine Learning and Predictive Analytics</label>
+                                            </div>  
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Recommendation Systems'>
+                                              <label class="form-check-label" for="exampleRadio2">Recommendation Systems</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Intelligent Virtual Assistants'>
+                                              <label class="form-check-label" for="exampleRadio2">Intelligent Virtual Assistants</label>
+                                            </div>
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Robotic Process Automation (RPA)'>
+                                              <label class="form-check-label" for="exampleRadio2">Robotic Process Automation (RPA)</label>
+                                            </div> 
+                                            
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Data Analytics and Insights'>
+                                              <label class="form-check-label" for="exampleRadio2">Data Analytics and Insights</label>
+                                            </div>
+
+                                            <div class=" form-check">
+                                              <input type="checkbox" name='subcat' class="form-check-input" id="exampleRadio2" value='Deep Learning'>
+                                              <label class="form-check-label" for="exampleRadio2">Deep Learning</label>
+                                            </div>
+                                        </fieldset>
+                                        <!--AI Services end-->
+                                    </div>
+                                     <!--Subcategory end-->
+                                    <button type='submit'class='btn mt-3 mb-4 col-12 update-btn'>Post Work</button>
+                            </form>
+                            <!--Form end-->
+{% endblock breadcrumbs %}

@@ -1,0 +1,29 @@
+{% extends 'admin/admin_dashboard.html'%}
+
+{% block content %}
+ <table class='table'>
+     <thead>
+         <tr>
+           <th scope="col">S/N</th>
+           <th scope="col">Name</th>
+           <th scope="col">Phone No</th>
+           <th scope="col">Email</th>
+           <th scope="col">Message</th>
+           <th scope="col">Date</th>
+         </tr>
+       </thead>
+       
+       <tbody>
+         {% for c in  contactus %}
+           <tr>
+             <th scope="row">{{loop.index}}</th>
+             <td>{{ c.cont_name}}</td>
+             <td>{{ c.cont_phone}}</td>
+             <td>{{ c.cont_email}}</td>
+             <td>{{ c.cont_msg}}</td>
+             <td>{{ c.cont_reg_date.strftime('%a %d %b %y')}}</td>
+           </tr>
+          {% endfor %}
+         </tbody>
+ </table>
+ {% endblock %}

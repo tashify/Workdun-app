@@ -1,0 +1,113 @@
+{% include 'header.html' %}
+
+
+
+<main class="freelancer">
+  <!-- start -->
+<div class="row">
+  <div class="col-md hero">
+
+    <div>
+      <h1 class='m-0'>Find the Best Freelancers for Your Projects</h1>
+			<p>Our platform connects businesses and individuals with top freelance talent from around the world.</p>
+    </div>
+
+    <div style='display:flex;'>
+    <p>Category:</p>
+    <select  id="category" class='form-select form-select-lg col-4 selectpicker' style='height:45px;'>
+      <option value=''>ALL Categories</option>
+      {% for c in cats %}
+      <option value='{{c.cat_id}}'>{{c.cat_name}}</option>
+      {% endfor %}
+    </select> 
+
+    <div class="col">
+      <input type="text" id="title" class="form-control form-control-lg" placeholder="Type a keyword">
+    </div> 
+     
+    <div class="col">
+      <button class="btn noround btn-lg col-12" style='background:blueviolet; color:white;' id="btnsearch">Search</button>
+    </div>
+
+  </div>
+
+</div>
+</div>
+<!--end-->
+
+
+<!--start-->
+<div class='container'>
+  <div class="row row-cols-1 row-cols-lg-4 align-items-stretch g-4 py-5">
+    {% for b in books %}
+        <div class="col">
+         <img src="/static/image/collections/{{b.subcat_cover}}" class="card-img-top bk m-0" height='250px'>
+         <h6 style='color:black;'><b>{{b.subcat_titile}}</b></h6>
+         <p class='m-0'><i>{{b.subcategories.cat_name}}</i></p><br>
+         <p class='m-0'><a href="/viewdetails/{{b.subcat_id}}" class='btn btn-secondary'>View Details</a></p>
+         </div>
+    {%endfor%}
+  </div>
+</div>
+<!--end-->
+
+
+<!-- start -->
+<div class="row">
+  <div class="col-md how-it-works pb-5">
+    <h2 class="mt-5 mb-5">How It Works</h2>
+
+    <div class="row">
+    <div class='col'>
+      <h3>Find Freelancers</h3>
+      <p>Browse through our talented pool of freelancers and find the perfect match for your project.</p>
+    </div>
+
+        <div class='col'>
+          <h3>Hire Freelancers</h3>
+          <p>Post your job and receive proposals from our freelancers. Select the best one for your project and get started.</p>
+        </div>
+
+        <div class='col'>
+          <h3>Pay Freelancers</h3>
+          <p>Our secure payment system ensures that your payment is released to the freelancer only after you are satisfied with their work.</p>
+        </div>
+
+    </div>
+  </div>
+</div>
+<!-- End -->
+  </main>
+
+{% include 'footer.html' %}
+</div>
+
+<script src="{{ url_for('static',filename='bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src='/static/jquery.js'></script>
+<script>
+  $(document).ready(function(){
+    $("#btnsearch").click(function(){
+      //retrieve the data
+      var cat = $('#category').val()
+      var title =$('#title').val()
+      //make ajax call
+      data2send = {"category":cat,"title":title}
+      $.ajax({
+        url:"/search/book",
+        data:data2send,
+        type:'get',
+        beforeSend:function(){
+          $("#btnsearch").html("<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true></span><span>Loading...</span>")
+        },
+        success:function(rsp){ 
+          $('#searchcontainer').html(rsp)
+         },
+        error:function(err){ console.log(err)}
+      })
+    })    
+  })
+
+
+</script>
+</body>
+</html>

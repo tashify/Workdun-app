@@ -1,0 +1,192 @@
+{% include 'header.html' %}
+
+<!--main section-->
+<main>
+<div class="row mt-3 about"> 
+<div class="col-md">
+      <div>
+        <h1>About Workdun</h1>
+      </div>
+</div> 
+</div>
+
+<!--start-->
+<div class="row mt-5 row-we">
+  <div>
+    <h1 class="text-center mt-5">Who We Are</h1>
+  </div>
+
+<div class="col-md">
+<div>
+  <p>We are a team of experienced professionals dedicated to helping businesses and individuals 
+  find top freelance talent for their projects. Our platform provides an easy 
+  and secure way to connect with freelancers from around the world.</p>
+</div>
+
+<div>
+  <p>Workdun.com is an expression of our beliefs that we hold close to our hearts.
+  It's one thing to simply provide a platform where Employers and Freelancers can work together.
+  It's another to do it in our own unique way.</p>
+</div>
+
+<div>
+  <p>We strive to be the leading platform where professionals go to connect, 
+  work together, and get work done. We believe that the best work is done in a 
+  flexible and secure environment. With transparency comes trust, and with a 
+  community that's built on meritocracy, people are eager to set aside differences
+  in geography,politics and religion to share and profit from economic opportunities.</p>
+</div>
+
+<div class='mb-5'>
+  <p>We have developed a close bond with our users. As their needs have changed, we have evolved our platform to provide the tools and support they want. Our users teach us, we learn and we grow. We invite you to become a part of our expanding community!</p>
+</div>
+</div>
+
+<div class="col-md mt-5">
+  <img src="{{url_for('static', filename ='image/metting.jpg')}}" alt="Our Team" height="400px">
+</div>
+</div>
+<!--stop-->
+
+
+<!--start-->
+<div class="row">
+<div class="col-md">
+
+<div class="general one mt-5">
+<p class="d-block goal">Our Mission</p>
+<p class="second">To bring Employers and Freelancers together from around the world to get work done.</p>
+</div>
+
+
+<div class="general two mt-4">
+  <p class="d-block goal">Our Vision</p>
+<p class="second">To help build a better world that's interconnected for prosperity and wired for peace.</p>
+</div>
+
+<div class="general three mt-4">
+  <p class="d-block goal">Our Proposition</p>
+<p class="second">Connect, collaborate, and get work done in a safe and flexible online environment.</p>
+</div>
+
+</div>
+</div>
+<!--stop-->
+
+
+<!--start-->
+<div class="row mt-5">
+  <div>
+    <h1 class="text-center mt-5">Our Value</h1>
+  </div>
+
+  <div class="col-md">
+<div class="value mb-5">
+  <p class="trust">Trust</p>
+  <p class="honest">Nurturing a sense of confidence through transparent and secure transactions.</p>
+</div>
+
+<div class="value mb-5">
+  <p class="trust">Accountability</p>
+  <p class="honest">Encouraging ownership of actions and interactions to ensure harmony on Workdun.</p>
+  </div>
+</div>
+
+<div class="col-md">
+    <div class="value marg">
+      <p class="trust">Tolerance</p>
+      <p class="honest">Practicing a resilient attitude and encouraging a positive work environment.</p>
+    </div>
+</div>
+
+  <div class="col-md">
+<div class="value mb-5">
+  <p class="trust">Respect</p>
+  <p class="honest">Welcoming professionals from all walks of life and recognizing their individual needs.</p>
+</div>
+    
+<div class="value mb-5">
+  <p class="trust">Integrity</p>
+  <p class="honest">Being honest and having strong moral principles,Fair and ethical in all that we do.</p>
+  </div>
+</div>
+</div>
+<!--stop-->
+
+
+<!-- start -->
+<div class="row">
+  <div class="col-md">
+<div class="contact mb-5 mt-5 text-center">
+
+  <h2>Contact Us</h2>
+  <p id='feedback'></p>
+
+  <form  id='myform'>
+
+    <div class='mb-4'>
+      {{form.name(class_='form-control', placeholder='Your name')}}
+      </div>
+
+      <div class='mb-4'>
+        {{form.phone(class_='form-control', placeholder='Enter your phone no')}}
+        </div>
+        
+    <div class='mb-4'>
+        {{form.email(class_='form-control', placeholder='Enter your email')}}
+        </div>
+
+    <div class='mb-4'>
+        {{form.message(class_='form-control', placeholder='message',style="height:200px")}}
+        </div>
+
+        
+    <div class='mb-3'>
+        {{form.btn(class_='btn btn-lg btn-outline-dark',type='button')}}
+        </div>
+    {{form.csrf_token}}
+  </form>
+</div>
+  </div>
+</div>
+<!-- stop -->
+
+</main>
+<!--end section-->
+
+{% include 'footer.html' %}
+</div>
+
+
+<script src="{{ url_for('static',filename='bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src='/static/jquery.js'></script>
+<script>
+$(document).ready(function(){
+$('#btn').click(function(){
+
+    var data2send =$('#myform').serialize()
+    $.ajax({
+        url:"/submit/contact",
+        data:data2send,
+        type:'post',
+        dataType:'json',
+        success:function(rsp){
+            $('#feedback').html(rsp['msg'])
+            $('#feedback').addClass(rsp['msgclass'])
+            $('#btn').val('Sent successfully')
+        },
+        beforesend:function(rsp){
+            $('#btn').val('please wait...')
+        },
+        error:function(errmsg){
+            console.log(errmsg)
+        }
+
+    })
+})
+
+})
+
+</script>
+</body>
+</html>

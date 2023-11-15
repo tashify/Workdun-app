@@ -1,0 +1,30 @@
+ {% extends 'admin/admin_dashboard.html'%}
+
+
+ {% block content %}
+ <table class='table'>
+     <thead>
+         <tr>
+           <th scope="col">S/N</th>
+           <th scope="col">Name</th>
+           <th scope="col">Country</th>
+           <th scope="col">Email</th>
+           <th scope="col">User picture</th>
+           <th scope="col">Reg_Date</th>
+         </tr>
+       </thead>
+     
+       <tbody>
+         {% for b in userdeets %}
+           <tr>
+             <th scope="row">{{loop.index}}</th>
+             <td>{{ b.user_fname}}</td>
+             <td>{{ b.user_country }}</td>
+             <td>{{ b.user_email }}</td>
+             <td><img src="{{url_for('static',filename='image/profiles/'+b.user_pix)}}" height="100"></td>
+             <td>{{ b.user_reg_date.strftime('%a %d %b %y')}}</td>
+           </tr>
+          {% endfor %}
+         </tbody>
+ </table>
+ {% endblock %}

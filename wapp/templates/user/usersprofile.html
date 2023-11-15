@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="keywords" content="Workdun">
+    <meta name="description" content="Find & Hire Expert Freelancers. Work with the best freelance talent from around the world on our secure, flexible and cost-effective platform.">
+    <meta name="author" content="Oyebade Taiwo comfort">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'fontawesome/css/all.css')}}">
+    <link rel="icon" href="{{url_for('static', filename = 'favicon/favicon-32x32.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+    <title></title>
+    <style>
+        .user-profile{
+            max-width:600px;
+            padding:40px;
+            margin:0px auto;
+            border:1px solid lightgray;
+            border-radius:20px;
+            font-family:time romans;
+        }
+
+        .users-parent{
+            display:flex;
+            gap:30px;
+            justify-content: center;  
+        }
+          
+        
+        .but{
+            border-radius:40px;
+        }
+        
+        .users{
+            padding:20px;
+            border:1px solid lightgray;
+            min-height:100px;
+            width:200px;
+            border-radius:5px; 
+        }
+    </style>
+</head>
+
+
+<body> 
+
+
+<main>
+    <div class = 'row'>
+        <div class = 'col-md'>
+
+            <form method='POST' action=''>
+                <input type='hidden' name='csrf_token' value={{csrf_token()}}>
+            <div class='user-profile  mt-5'>
+                <h1 class="text-center mb-5">Join as a client or freelancer</h1>
+
+                <div  class='users-parent'>
+                    <div class='users'>
+                        <input type='radio' name='rad' id='rad'>
+                        <h5>I'am a client, hiring for a project</h5>
+                    </div>
+
+                    <div class='users'>
+                        <input type='radio'  name='rad' id='rad'>
+                        <h5>I'am a freelance, looking for work</h5>
+                    </div>
+                </div>
+                <button type='submit' class='btn a-button but  mt-5 offset-3 col-6 mb-5' >Create Account</button>
+            </form>
+
+
+            </div>
+        </div>
+    
+</main>
+
+</div>
+</body>
+<html>

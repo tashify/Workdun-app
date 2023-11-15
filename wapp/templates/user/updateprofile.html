@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    
+
+    <meta name="keywords" content="Workdun">
+    <meta name="description" content="Find & Hire Expert Freelancers. Work with the best freelance talent from around the world on our secure, flexible and cost-effective platform.">
+    <meta name="author" content="Oyebade Taiwo comfort">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'fontawesome/css/all.css')}}">
+    
+    <link rel="icon" href="{{url_for('static', filename = 'favicon/favicon-32x32.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='animate.min.css')}}">
+    <title>{{userdeets.user_fname}} | Workdun </title>
+    <style>
+
+        /*start*/
+        .pro-details{
+        max-width:600px;
+        padding:20px;
+        margin:0px auto;
+        border:1px solid lightgray;
+     }
+
+
+     .pro-photo{
+        text-align:center;  
+     }
+
+     .pro-photo img{
+        border-radius:100%; 
+        height:200px; 
+        width:200px; 
+     }
+
+
+     .p-des{
+      font-weight:600;
+  }  
+    /*end*/
+</style>
+</head>
+<body>
+    <div class="container-fluid">
+        <header>
+            <!--first nav-bar-->
+          {% if session.get('userid') and session.get('user_loggedin')%}
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="{{url_for('home')}}">WORKDUN</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                  <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('freelancer')}}">Find Freelancers</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{url_for('about')}}">About</a>
+                    </li>
+                  </ul>  
+          
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark button" type="submit">Search</button>
+                  </form>
+          
+              <div class="dropdown text-end">
+                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                      {% if userdeets %}
+                      <img src='/static/image/profiles/{{userdeets.user_pix}}' style='width:50px; height:50px; border-radius:50%;'> 
+                      {% else %}
+                      <img src='{{url_for('static', filename='image/cat-1.jpg')}}' style='width:50px; height:50px; border-radius:50%;'>
+                      {% endif %}
+                    </a>
+                  
+                      <ul class="dropdown-menu text-small">
+                      <li><a class="dropdown-item" href="/user/profile/">Profile</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/profilesetting/">Settings</a></li>
+                      
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/signout">Sign out</a></li>
+                  </ul>
+              </div>
+          
+                </div>
+              </div>
+            </nav>
+          {% endif %}
+            <!--end-->
+            
+            
+            <!--second nav-bar-->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" style='border:2px solid lightgray;'>
+              <div class="container-fluid">
+            
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Graphics & Design</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Digital Marketing</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Writing & Translation</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Music & Audio</a> 
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Video & Animation</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Programming & Tech</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Photography</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Business</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">AI Services</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+            <!--end-->
+          </header>
+
+
+        <form>
+            <!--start-->
+                <div class="row">
+                    <div class="col-md">
+                        <div class='pro-details mt-5'>
+                            <div class="pro-photo">
+                                
+
+                                <img src='/static/image/profiles/{{userdeets.user_pix}}'>
+                                <h2>{{userdeets.user_fname}}</h2>
+
+                                         <hr class='mb-5 mt-4'> 
+
+                                    <div style=" color:gray;">
+                                        <div style="display:flex; justify-content: space-between;" class='mb-3'>
+                                            <h6>From</h6>
+                                            <h5 style='color:#555;'>{{userdeets.user_country}}</h5>
+                                        </div>
+
+                                        <div style="display:flex; justify-content: space-between;">
+                                            <h6>Member since</h6>
+                                            <h5 style='color:#555;'>{{userdeets.user_reg_date.strftime('%b %Y')}}</h5>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <!--end-->
+
+
+
+            <!--start-->
+                    <div class='row'>
+                        <div class='col-md'>
+                            <div class='pro-details mt-5 mb-3'>
+                                <p class='p-0 m-0 mb-3 p-des'>Description</p>
+                               <div>                  
+                                    <p  class='p-0 m-0'>{{userdeets.user_desc}}</p>
+                               </div>
+
+                               <hr style='color:gray;' class='mb-4'>
+
+                               <div class='col-md'>
+                                    <p class='p-0 m-0 mb-3 p-des'>Languages</p>
+                                   <div>
+                                      <p class='p-0 m-0'>{{userdeets.user_lang}}</p>-
+                                      <span>{{userdeets.user_lang_level}}</span>    
+                                   </div>
+                               </div>
+                               <hr style='color:gray;' class='mb-4'>
+
+                            <div class='col-md'>
+                                <p class='p-0 m-0 mb-3 p-des'>Skills</p>
+                                    <div>
+                                      <p class='p-0 m-0'>{{userdeets.user_skill}}</p>
+                                    </div>
+                           </div>
+
+                            </div>
+                        </div>
+                    </div>
+            <!--end-->
+        </form> 
+        {% include 'footer.html' %}
+        <script src="{{ url_for('static',filename='bootstrap/js/bootstrap.bundle.min.js')}}"></script> 
+    </div>
+
+</body>
+</html>

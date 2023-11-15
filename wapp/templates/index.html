@@ -1,0 +1,147 @@
+{% include 'header.html' %}
+
+
+<main>
+  <!--banner section-->
+<div class="row back-ground">
+  
+  <div class="col-md">
+      <div class="banner">
+  <h1 class='mb-0'>Find & Hire</h1>  
+  <h2>Expert Freelancers</h2>
+  <p class="d-block m-0" >Work with the best freelance around the world on our secure,</p>
+  <p class="d-block m-0">flexible and cost-effective platform.</p>
+  <a href="{{url_for('freelancer')}}" class="btn btn-lg a-button mt-5"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
+      </div>
+  </div>
+
+  <div class="col-md-6">
+    <img src="{{url_for('static', filename = 'image/person.png')}}" class="b-image" height="300px"alt="">
+  </div>
+</div>
+<!--end section-->
+
+
+<!--Freelancers category section-->
+<div class="row">
+  <div class="col-md text-center mt-5">
+    <div>
+      <h1 class="free-cat"> Freelancers category</h1>
+    </div>
+
+  <div style="display:flex; color:aliceblue; font-size:20px; height:200px; justify-content:space-around; gap:20px; padding-top:20px;">
+    <div style="width:20%; flex-grow:1; padding-top:50px; border-radius:10px; background-image:url({{url_for('static', filename = 'image/cat-1.jpg')}});">
+    <h3>Web Design</h3>
+    </div>
+    
+    <div style="width:20%; flex-grow:1; padding-top:50px; border-radius:10px; background-image:url({{url_for('static', filename = 'image/cat-2.jpg')}});">
+    <h3>Development</h3>
+    </div>
+    
+    <div style="width:20%; flex-grow:1; padding-top:50px; border-radius:10px; background-image:url({{url_for('static', filename = 'image/cat-3.jpg')}});">
+    <h3>Game Design</h3>
+    </div>
+    
+    <div style="width:20%; flex-grow:1; padding-top:50px; border-radius:10px; background-image:url({{url_for('static', filename = 'image/cat-4.jpg')}});">
+    <h3> App Design</h3>
+    </div>
+  </div>
+    
+  </div>
+</div>
+
+
+<div class="row text-center">
+  <div class="col-md">
+
+    <div style="display:flex; color:aliceblue; font-size:20px; height:200px; justify-content:space-around; gap:20px; padding-top:20px;">
+      <div style="width:20%; flex-grow:1; padding-top:50px; border-radius:10px; background-image:url({{url_for('static', filename = 'image/cat-5.jpg')}});">
+      <h3>Marketing</h3>
+      </div>
+      
+      <div style="width:20%; flex-grow:1; padding-top:50px; border-radius:10px; background-image:url({{url_for('static', filename = 'image/cat-6.jpg')}});">
+      <h3>Research</h3>
+      </div>
+      
+      <div style="width:20%; flex-grow:1; padding-top:50px; border-radius:10px; background-image:url({{url_for('static', filename = 'image/cat-7.jpg')}});">
+      <h3>Content Writing</h3>
+      </div>
+      
+      <div style="width:20%; flex-grow:1; padding-top:50px; border-radius:10px; background-image:url({{url_for('static', filename = 'image/cat-8.jpg')}});">
+      <h3>SEO</h3>
+      </div>
+    </div>
+
+  </div>
+  </div>
+  <!--end section-->
+
+
+
+<!--Why Choose Us section-->
+<div class="row Choose text-center mt-5 mb-5">
+  <div>
+    <h1 class="mt-3 mb-5">why choose us</h1>
+  </div>
+
+  <!--first coloum starting-->
+  <div class='col-md'>
+    <div class='row'>
+      <div class='col-md-12'>
+        <div class="credible mb-5">
+          <p>Credibility</p>
+          <p class="pb-5">We verify Freelancers, publish their feedback scores and All-Time Transaction Data to help you identify time-tested professionals across the globe.</p>
+        </div>
+      </div>
+
+
+      <div class='col-md-12'>
+        <div class="credible mb-5">
+          <p>Flexibility</p>
+          <p class="pb-5">We provide multiple Payment terms and flexible Agreements.</p>
+        </div>
+      </div>
+
+
+      <div class='col-md-12'>
+        <div class="credible mb-5">
+          <p>Security</p>
+          <p class="pb-5">We offer SafePay payment protection and your choice of preferred payment method for financial peace of mind.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<!--end of first coloum-->
+
+
+<!--second coloum starting-->
+  <div class='col-md'>
+    <div class='row'>
+      <div class='col-md-12'>
+        <div class="credible mb-5">
+          <p>Value</p>
+          <p class="pb-5">We have the lowest fees charge, providing you with maximum value at minimum cost.</p>
+        </div>
+      </div>
+
+
+      <div class='col-md-12'>
+        <div class="credible mb-5">
+          <p>Support</p>
+          <p class="pb-5">Our dedicated support team works 24/7 to resolve all of your queries over the phone or email, no matter where you are located.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<!--end of second coloum -->
+</div>
+<!-- Why Choose Us end section-->
+</main>
+
+{% include 'footer.html' %}
+    </div>
+<script src="{{ url_for('static',filename='bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

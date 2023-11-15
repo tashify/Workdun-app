@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="keywords" content="Workdun">
+    <meta name="description" content="Find & Hire Expert Freelancers. Work with the best freelance talent from around the world on our secure, flexible and cost-effective platform.">
+    <meta name="author" content="Oyebade Taiwo comfort">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'fontawesome/css/all.css')}}">
+    <link rel="icon" href="{{url_for('static', filename = 'favicon/favicon-32x32.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='animate.min.css')}}">
+    <title></title>
+    <style>
+
+        .pro-details{
+        max-width:600px;
+        padding:20px;
+        margin:0px auto;
+        border:1px solid lightgray;
+     }
+
+
+    [type="text"]{
+        height:40px;
+        padding:5px;
+    }
+
+    
+.update-btn{
+    background-color:blueviolet;
+    color:white;
+}
+</style>
+</head>
+<body>
+
+
+             <!--start-->
+                <div class="row">
+                    <div class="col-md">
+                        <div class='pro-details mt-5 mb-5'>
+{% block breadcrumbs %}
+                            <form method='POST' action='' enctype='multipart/form-data'>
+                                <input type='hidden' name='csrf_token' value='{{csrf_token()}}'>
+                                  
+                                    <h3 class='mt-5'>Edit Profile Page</h3>
+                                    <div>
+                                        <label for='fullname'>Fullname</label>
+                                        <input type="text" name ='fullname' id='fullname' value='{{userdeets.user_fname}}' class="mt-1 form-control">
+                                    </div>
+                                    
+                                        <h5 class="mt-1">Choose your display name</h5>
+                                        <h6 class="mb-3">This name appears next to your profile photo.</h6>
+    
+                                    <div>
+                                        <label for='pix'>Display Picture</label>
+                                        <input type='file' name='pix' id='pix' Class='mt-1 form-control'>
+                                    </div>
+                            <button type='submit'class='btn mt-3 mb-4 col-12 update-btn'>Update Profile</button>
+                            </form>
+{% endblock breadcrumbs %}
+                        </div>
+                    </div>
+                   
+
+                </div>
+            <!--end-->
+
+
+
+
+{% include 'footer.html' %}
+</body>
+</html>
